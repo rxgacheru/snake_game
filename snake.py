@@ -1,4 +1,4 @@
-import turtle
+import turtle 
 import time
 import random
 
@@ -8,22 +8,21 @@ high_score = 0
 
 window = turtle.Screen()
 window.title("Snake Game")
-window.bgcolor("dodger blue")
+window.bgcolor("black")
 window.setup(width=600, height=600)
 window.tracer(0)
 
 snake_head = turtle.Turtle()
 snake_head.shape("square")
-snake_head.color("alice blue")
+snake_head.color("orange")
 snake_head.penup()
 snake_head.goto(0, 0)
 snake_head.direction = "Stop"
 
 food = turtle.Turtle()
 food.speed(0)
-shapes = random.choice(['square', 'triangle', 'circle'])
-food.shape(shapes)
-colors = random.choice(['green', 'blue', 'red','orange'])
+food.shape('circle')
+colors = random.choice(['blue', 'red'])
 food.color(colors)
 food.penup()
 food.goto(0, 100)
@@ -87,8 +86,8 @@ while True:
         time.sleep(1)
         snake_head.goto(0, 0)
         snake_head.direction ="Stop"
-        colors = random.choice(['red', 'blue', 'green'])
-        shapes = random.choice(['square', 'circle'])
+        colors = random.choice(['red', 'blue'])
+        shapes = random.choice('circle')
         for segment in segments:
             segment.goto(1000, 1000)
         segments.clear()
@@ -98,15 +97,16 @@ while True:
         score_display.write("Score : {} High Score : {}".format(
             score, high_score), align="center", font=("candara", 24,"bold"))
 
-    if snake_head.distance(food) < 20:
+    if snake_head.distance(food) < 15:
         x = random.randint(-280, 280)
         y = random.randint(-280, 280)
         food.goto(x, y)
 
+
         new_segment = turtle.Turtle()
         new_segment.speed(0)
         new_segment.shape("square")
-        new_segment.color("orange")  # tail colour
+        new_segment.color("orange")  
         new_segment.penup()
         segments.append(new_segment)
         delay -= 0.001
